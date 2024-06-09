@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{08eca41b-b324-4214-88b3-6a865e2b93c5}</ProjectGuid>
+    <RootNamespace>byteguardian</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)\includes;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\lib;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(ShortProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)\includes;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\lib;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>build\$(ShortProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freetype.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freetype.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="includes\imgui\backends\imgui_impl_dx11.cpp" />
+    <ClCompile Include="includes\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="includes\imgui\imgui.cpp" />
+    <ClCompile Include="includes\imgui\imgui_demo.cpp" />
+    <ClCompile Include="includes\imgui\imgui_draw.cpp" />
+    <ClCompile Include="includes\imgui\imgui_tables.cpp" />
+    <ClCompile Include="includes\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="includes\imgui\misc\freetype\imgui_freetype.cpp" />
+    <ClCompile Include="src\cheat\aim.cpp" />
+    <ClCompile Include="src\cheat\esp.cpp" />
+    <ClCompile Include="src\cheat\misc.cpp" />
+    <ClCompile Include="src\config\config.h" />
+    <ClCompile Include="src\gui\gui.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\menu\menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assets\csCharacter.h" />
+    <ClInclude Include="include.h" />
+    <ClInclude Include="includes\dlg\dlg.h" />
+    <ClInclude Include="includes\dlg\output.h" />
+    <ClInclude Include="includes\freetype\config\ftconfig.h" />
+    <ClInclude Include="includes\freetype\config\ftheader.h" />
+    <ClInclude Include="includes\freetype\config\ftmodule.h" />
+    <ClInclude Include="includes\freetype\config\ftoption.h" />
+    <ClInclude Include="includes\freetype\config\ftstdlib.h" />
+    <ClInclude Include="includes\freetype\config\integer-types.h" />
+    <ClInclude Include="includes\freetype\config\mac-support.h" />
+    <ClInclude Include="includes\freetype\config\public-macros.h" />
+    <ClInclude Include="includes\freetype\freetype.h" />
+    <ClInclude Include="includes\freetype\ftadvanc.h" />
+    <ClInclude Include="includes\freetype\ftbbox.h" />
+    <ClInclude Include="includes\freetype\ftbdf.h" />
+    <ClInclude Include="includes\freetype\ftbitmap.h" />
+    <ClInclude Include="includes\freetype\ftbzip2.h" />
+    <ClInclude Include="includes\freetype\ftcache.h" />
+    <ClInclude Include="includes\freetype\ftchapters.h" />
+    <ClInclude Include="includes\freetype\ftcid.h" />
+    <ClInclude Include="includes\freetype\ftcolor.h" />
+    <ClInclude Include="includes\freetype\ftdriver.h" />
+    <ClInclude Include="includes\freetype\fterrdef.h" />
+    <ClInclude Include="includes\freetype\fterrors.h" />
+    <ClInclude Include="includes\freetype\ftfntfmt.h" />
+    <ClInclude Include="includes\freetype\ftgasp.h" />
+    <ClInclude Include="includes\freetype\ftglyph.h" />
+    <ClInclude Include="includes\freetype\ftgxval.h" />
+    <ClInclude Include="includes\freetype\ftgzip.h" />
+    <ClInclude Include="includes\freetype\ftimage.h" />
+    <ClInclude Include="includes\freetype\ftincrem.h" />
+    <ClInclude Include="includes\freetype\ftlcdfil.h" />
+    <ClInclude Include="includes\freetype\ftlist.h" />
+    <ClInclude Include="includes\freetype\ftlogging.h" />
+    <ClInclude Include="includes\freetype\ftlzw.h" />
+    <ClInclude Include="includes\freetype\ftmac.h" />
+    <ClInclude Include="includes\freetype\ftmm.h" />
+    <ClInclude Include="includes\freetype\ftmodapi.h" />
+    <ClInclude Include="includes\freetype\ftmoderr.h" />
+    <ClInclude Include="includes\freetype\ftotval.h" />
+    <ClInclude Include="includes\freetype\ftoutln.h" />
+    <ClInclude Include="includes\freetype\ftparams.h" />
+    <ClInclude Include="includes\freetype\ftpfr.h" />
+    <ClInclude Include="includes\freetype\ftrender.h" />
+    <ClInclude Include="includes\freetype\ftsizes.h" />
+    <ClInclude Include="includes\freetype\ftsnames.h" />
+    <ClInclude Include="includes\freetype\ftstroke.h" />
+    <ClInclude Include="includes\freetype\ftsynth.h" />
+    <ClInclude Include="includes\freetype\ftsystem.h" />
+    <ClInclude Include="includes\freetype\fttrigon.h" />
+    <ClInclude Include="includes\freetype\fttypes.h" />
+    <ClInclude Include="includes\freetype\ftwinfnt.h" />
+    <ClInclude Include="includes\freetype\internal\autohint.h" />
+    <ClInclude Include="includes\freetype\internal\cffotypes.h" />
+    <ClInclude Include="includes\freetype\internal\cfftypes.h" />
+    <ClInclude Include="includes\freetype\internal\compiler-macros.h" />
+    <ClInclude Include="includes\freetype\internal\ftcalc.h" />
+    <ClInclude Include="includes\freetype\internal\ftdebug.h" />
+    <ClInclude Include="includes\freetype\internal\ftdrv.h" />
+    <ClInclude Include="includes\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="includes\freetype\internal\fthash.h" />
+    <ClInclude Include="includes\freetype\internal\ftmemory.h" />
+    <ClInclude Include="includes\freetype\internal\ftmmtypes.h" />
+    <ClInclude Include="includes\freetype\internal\ftobjs.h" />
+    <ClInclude Include="includes\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="includes\freetype\internal\ftrfork.h" />
+    <ClInclude Include="includes\freetype\internal\ftserv.h" />
+    <ClInclude Include="includes\freetype\internal\ftstream.h" />
+    <ClInclude Include="includes\freetype\internal\fttrace.h" />
+    <ClInclude Include="includes\freetype\internal\ftvalid.h" />
+    <ClInclude Include="includes\freetype\internal\psaux.h" />
+    <ClInclude Include="includes\freetype\internal\pshints.h" />
+    <ClInclude Include="includes\freetype\internal\services\svbdf.h" />
+    <ClInclude Include="includes\freetype\internal\services\svcfftl.h" />
+    <ClInclude Include="includes\freetype\internal\services\svcid.h" />
+    <ClInclude Include="includes\freetype\internal\services\svfntfmt.h" />
+    <ClInclude Include="includes\freetype\internal\services\svgldict.h" />
+    <ClInclude Include="includes\freetype\internal\services\svgxval.h" />
+    <ClInclude Include="includes\freetype\internal\services\svkern.h" />
+    <ClInclude Include="includes\freetype\internal\services\svmetric.h" />
+    <ClInclude Include="includes\freetype\internal\services\svmm.h" />
+    <ClInclude Include="includes\freetype\internal\services\svotval.h" />
+    <ClInclude Include="includes\freetype\internal\services\svpfr.h" />
+    <ClInclude Include="includes\freetype\internal\services\svpostnm.h" />
+    <ClInclude Include="includes\freetype\internal\services\svprop.h" />
+    <ClInclude Include="includes\freetype\internal\services\svpscmap.h" />
+    <ClInclude Include="includes\freetype\internal\services\svpsinfo.h" />
+    <ClInclude Include="includes\freetype\internal\services\svsfnt.h" />
+    <ClInclude Include="includes\freetype\internal\services\svttcmap.h" />
+    <ClInclude Include="includes\freetype\internal\services\svtteng.h" />
+    <ClInclude Include="includes\freetype\internal\services\svttglyf.h" />
+    <ClInclude Include="includes\freetype\internal\services\svwinfnt.h" />
+    <ClInclude Include="includes\freetype\internal\sfnt.h" />
+    <ClInclude Include="includes\freetype\internal\svginterface.h" />
+    <ClInclude Include="includes\freetype\internal\t1types.h" />
+    <ClInclude Include="includes\freetype\internal\tttypes.h" />
+    <ClInclude Include="includes\freetype\internal\wofftypes.h" />
+    <ClInclude Include="includes\freetype\otsvg.h" />
+    <ClInclude Include="includes\freetype\t1tables.h" />
+    <ClInclude Include="includes\freetype\ttnameid.h" />
+    <ClInclude Include="includes\freetype\tttables.h" />
+    <ClInclude Include="includes\freetype\tttags.h" />
+    <ClInclude Include="includes\ft2build.h" />
+    <ClInclude Include="includes\imgui\backends\imgui_impl_dx11.h" />
+    <ClInclude Include="includes\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="includes\imgui\imconfig.h" />
+    <ClInclude Include="includes\imgui\imgui.h" />
+    <ClInclude Include="includes\imgui\ImGuiNotify.h" />
+    <ClInclude Include="includes\imgui\imgui_internal.h" />
+    <ClInclude Include="includes\imgui\imstb_rectpack.h" />
+    <ClInclude Include="includes\imgui\imstb_textedit.h" />
+    <ClInclude Include="includes\imgui\imstb_truetype.h" />
+    <ClInclude Include="includes\imgui\misc\fonts\byteguardian.h" />
+    <ClInclude Include="includes\imgui\misc\fonts\fa_solid_900.h" />
+    <ClInclude Include="includes\imgui\misc\fonts\FontAwesome6.h" />
+    <ClInclude Include="includes\imgui\misc\fonts\smallest_pixel.h" />
+    <ClInclude Include="includes\imgui\misc\freetype\imgui_freetype.h" />
+    <ClInclude Include="includes\yas\abseil_types.hpp" />
+    <ClInclude Include="includes\yas\binary_iarchive.hpp" />
+    <ClInclude Include="includes\yas\binary_oarchive.hpp" />
+    <ClInclude Include="includes\yas\boost_types.hpp" />
+    <ClInclude Include="includes\yas\buffers.hpp" />
+    <ClInclude Include="includes\yas\count_streams.hpp" />
+    <ClInclude Include="includes\yas\defaul_traits.hpp" />
+    <ClInclude Include="includes\yas\detail\config\compiler\clang.hpp" />
+    <ClInclude Include="includes\yas\detail\config\compiler\gcc.hpp" />
+    <ClInclude Include="includes\yas\detail\config\compiler\intel.hpp" />
+    <ClInclude Include="includes\yas\detail\config\compiler\msvc.hpp" />
+    <ClInclude Include="includes\yas\detail\config\config.hpp" />
+    <ClInclude Include="includes\yas\detail\config\endian.hpp" />
+    <ClInclude Include="includes\yas\detail\io\binary_streams.hpp" />
+    <ClInclude Include="includes\yas\detail\io\endian_conv.hpp" />
+    <ClInclude Include="includes\yas\detail\io\exception_base.hpp" />
+    <ClInclude Include="includes\yas\detail\io\header.hpp" />
+    <ClInclude Include="includes\yas\detail\io\io_exceptions.hpp" />
+    <ClInclude Include="includes\yas\detail\io\json_streams.hpp" />
+    <ClInclude Include="includes\yas\detail\io\serialization_exceptions.hpp" />
+    <ClInclude Include="includes\yas\detail\io\text_streams.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\auto_rec.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\bitand.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\bool.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\cat.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\comma.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\comma_if.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\compl.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\config.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\dec.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\empty.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\enum_params.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\equal.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\error.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\expr_if.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\expr_iif.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\if.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\iif.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\inc.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\not_equal.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\overload.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\preprocessor.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\repeat.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\rep_for.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\rep_for_impl.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\rep_for_impl_dmc.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\rep_for_impl_edg.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\rep_for_impl_msvc.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\seq_elem.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\seq_for_each.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\seq_for_each_i.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\seq_seq.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\seq_size.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\stringize.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\tuple_eat.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\tuple_elem.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\tuple_rem.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\tuple_size.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\tuple_to_seq.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\variadic_elem.hpp" />
+    <ClInclude Include="includes\yas\detail\preprocessor\variadic_size.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\base64.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\base_object.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\cast.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\ctmap.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\ctsort.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\fnv1a.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\json_tools.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\limit.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\limit_exceptions.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\noncopyable.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\rapidjson_dtoa.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\save_load_string.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\tuple_element_name.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\tuple_element_switch.hpp" />
+    <ClInclude Include="includes\yas\detail\tools\utf8conv.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\flags.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\has_function_serialize.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\has_memfn_serialize.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\serializer.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\typeinfo.hpp" />
+    <ClInclude Include="includes\yas\detail\type_traits\type_traits.hpp" />
+    <ClInclude Include="includes\yas\file_streams.hpp" />
+    <ClInclude Include="includes\yas\get_archive.hpp" />
+    <ClInclude Include="includes\yas\json_iarchive.hpp" />
+    <ClInclude Include="includes\yas\json_oarchive.hpp" />
+    <ClInclude Include="includes\yas\mem_streams.hpp" />
+    <ClInclude Include="includes\yas\null_streams.hpp" />
+    <ClInclude Include="includes\yas\object.hpp" />
+    <ClInclude Include="includes\yas\qt_types.hpp" />
+    <ClInclude Include="includes\yas\serialize.hpp" />
+    <ClInclude Include="includes\yas\std_streams.hpp" />
+    <ClInclude Include="includes\yas\std_traits.hpp" />
+    <ClInclude Include="includes\yas\std_types.hpp" />
+    <ClInclude Include="includes\yas\text_iarchive.hpp" />
+    <ClInclude Include="includes\yas\text_oarchive.hpp" />
+    <ClInclude Include="includes\yas\tools\archinfo.hpp" />
+    <ClInclude Include="includes\yas\tools\array.hpp" />
+    <ClInclude Include="includes\yas\tools\asis.hpp" />
+    <ClInclude Include="includes\yas\tools\hexdump.hpp" />
+    <ClInclude Include="includes\yas\tools\init.hpp" />
+    <ClInclude Include="includes\yas\types\abseil\btree_map.hpp" />
+    <ClInclude Include="includes\yas\types\abseil\flat_hash_map.hpp" />
+    <ClInclude Include="includes\yas\types\boost\array.hpp" />
+    <ClInclude Include="includes\yas\types\boost\chrono.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_deque.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_flat_map.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_flat_multimap.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_flat_multiset.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_flat_set.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_list.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_map.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_multimap.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_multiset.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_set.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_slist.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_stable_vector.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_static_vector.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_string.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_vector.hpp" />
+    <ClInclude Include="includes\yas\types\boost\container_wstring.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_list.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_map.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_pair.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_set.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_tuple.hpp" />
+    <ClInclude Include="includes\yas\types\boost\fusion_vector.hpp" />
+    <ClInclude Include="includes\yas\types\boost\optional.hpp" />
+    <ClInclude Include="includes\yas\types\boost\string_view.hpp" />
+    <ClInclude Include="includes\yas\types\boost\tuple.hpp" />
+    <ClInclude Include="includes\yas\types\boost\unordered_map.hpp" />
+    <ClInclude Include="includes\yas\types\boost\unordered_multimap.hpp" />
+    <ClInclude Include="includes\yas\types\boost\unordered_multiset.hpp" />
+    <ClInclude Include="includes\yas\types\boost\unordered_set.hpp" />
+    <ClInclude Include="includes\yas\types\boost\variant.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\array.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\const_sized_array.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\forward_list.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\fusion_seq.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\keyval.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\list.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\optional.hpp" />
+    <ClInclude Include="includes\yas\types\concepts\set.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qbytearray.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qlist.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qmap.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qstring.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qstringlist.hpp" />
+    <ClInclude Include="includes\yas\types\qt\qvector.hpp" />
+    <ClInclude Include="includes\yas\types\std\array.hpp" />
+    <ClInclude Include="includes\yas\types\std\bitset.hpp" />
+    <ClInclude Include="includes\yas\types\std\chrono.hpp" />
+    <ClInclude Include="includes\yas\types\std\complex.hpp" />
+    <ClInclude Include="includes\yas\types\std\deque.hpp" />
+    <ClInclude Include="includes\yas\types\std\forward_list.hpp" />
+    <ClInclude Include="includes\yas\types\std\list.hpp" />
+    <ClInclude Include="includes\yas\types\std\map.hpp" />
+    <ClInclude Include="includes\yas\types\std\multimap.hpp" />
+    <ClInclude Include="includes\yas\types\std\multiset.hpp" />
+    <ClInclude Include="includes\yas\types\std\optional.hpp" />
+    <ClInclude Include="includes\yas\types\std\pair.hpp" />
+    <ClInclude Include="includes\yas\types\std\set.hpp" />
+    <ClInclude Include="includes\yas\types\std\string.hpp" />
+    <ClInclude Include="includes\yas\types\std\string_view.hpp" />
+    <ClInclude Include="includes\yas\types\std\tuple.hpp" />
+    <ClInclude Include="includes\yas\types\std\u16string.hpp" />
+    <ClInclude Include="includes\yas\types\std\unordered_map.hpp" />
+    <ClInclude Include="includes\yas\types\std\unordered_multimap.hpp" />
+    <ClInclude Include="includes\yas\types\std\unordered_multiset.hpp" />
+    <ClInclude Include="includes\yas\types\std\unordered_set.hpp" />
+    <ClInclude Include="includes\yas\types\std\variant.hpp" />
+    <ClInclude Include="includes\yas\types\std\vector.hpp" />
+    <ClInclude Include="includes\yas\types\std\wstring.hpp" />
+    <ClInclude Include="includes\yas\types\utility\array.hpp" />
+    <ClInclude Include="includes\yas\types\utility\asis.hpp" />
+    <ClInclude Include="includes\yas\types\utility\autoarray.hpp" />
+    <ClInclude Include="includes\yas\types\utility\buffer.hpp" />
+    <ClInclude Include="includes\yas\types\utility\enum.hpp" />
+    <ClInclude Include="includes\yas\types\utility\fundamental.hpp" />
+    <ClInclude Include="includes\yas\types\utility\init.hpp" />
+    <ClInclude Include="includes\yas\types\utility\object.hpp" />
+    <ClInclude Include="includes\yas\types\utility\usertype.hpp" />
+    <ClInclude Include="includes\yas\types\utility\value.hpp" />
+    <ClInclude Include="includes\yas\version.hpp" />
+    <ClInclude Include="includes\yas\yas_fwd.hpp" />
+    <ClInclude Include="src\cheat\aim.h" />
+    <ClInclude Include="src\cheat\EntitySystem.h" />
+    <ClInclude Include="src\cheat\esp.h" />
+    <ClInclude Include="src\cheat\misc.h" />
+    <ClInclude Include="src\gui\gui.h" />
+    <ClInclude Include="src\memify\handle_hijack.h" />
+    <ClInclude Include="src\memify\memify.h" />
+    <ClInclude Include="src\menu\menu.h" />
+    <ClInclude Include="utils\logger.h" />
+    <ClInclude Include="utils\w2s.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\freetype.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
