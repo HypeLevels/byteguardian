@@ -3,6 +3,7 @@
 void aim::triggerbot() {
 	while (gui::shouldRun) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		ViewMatrix vm = process.Read<ViewMatrix>(client + dwViewMatrix);
 		if (!config::cfg.aimbot.triggerBot || !process.InForeground() || !GetAsyncKeyState(config::cfg.aimbot.triggerBotKey))
 			continue;
 		uintptr_t lPawn = process.Read<uintptr_t>(client + dwLocalPlayerPawn);
@@ -20,6 +21,15 @@ void aim::triggerbot() {
 		const auto pTeam = process.Read<uint8_t>(pPawn + m_iTeamNum);
 		if (pHealth <= 0 || (lTeam == pTeam && !config::cfg.aimbot.triggerBotTargetsTeam))
 			continue;
+		if (config::cfg.aimbot.triggerMagnet) {
+			uintptr_t gameSceneNode = process.Read<uintptr_t>(pPawn + m_pGameSceneNode);
+			auto boneAddress = process.Read<uintptr_t>(gameSceneNode + 0x170 + 0x80) + (config::cfg.aimbot.selectedHitbox * 32);
+			auto bonePosition = process.Read<Vector>(boneAddress);
+			ImVec2 screenPos;
+			w2s(bonePosition, screenPos, vm);
+			mouse_event(MOUSEEVENTF_MOVE, screenPos.x - ImGui::GetIO().DisplaySize.x * 0.5, screenPos.y - ImGui::GetIO().DisplaySize.y * 0.5, 0, 0);
+		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(config::cfg.aimbot.triggerBotDelay));
 		mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 		mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 	}

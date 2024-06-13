@@ -2,7 +2,7 @@
 
 void misc::bunnyhop() {
 	while (gui::shouldRun) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		std::this_thread::sleep_for(std::chrono::microseconds(15625));
 		if (!config::cfg.misc.bhop || !process.InForeground())
 			continue;
 		uintptr_t lPawn = process.Read<uintptr_t>(client + dwLocalPlayerPawn);

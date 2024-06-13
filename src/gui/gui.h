@@ -15,6 +15,7 @@ namespace gui {
 	inline bool shouldRun = true;
 	inline bool isOpen = true;
 	inline bool espPreview = true;
+	EXTERN_C DWORD PrepareForUIAccess();
 
 	void setupWindow(HINSTANCE instance);
 	void setupDX11(int nCmdShow);

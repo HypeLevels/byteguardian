@@ -5,7 +5,7 @@ void menu::drawMenu() {
     ImGui::PushStyleColor(ImGuiCol_WindowShadow, ImVec4(0.4980392158031464f, 0.5137255191802979f, 1.0f, 1.f));
     ImGui::Begin("byteguardian", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
     ImGui::PopStyleColor();
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[2]);
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[3]);
     ImGui::Text("A");
     ImGui::PopFont();
     ImGui::SameLine();
@@ -154,23 +154,24 @@ void menu::drawConfig() {
         }
         ImGui::EndListBox();
     }
-
-    ImGui::SetNextWindowSize(ImVec2(390, 112));
+    auto textSize = ImGui::CalcTextSize("Are you sure you want to save your config?");
+    auto textSize2 = ImGui::CalcTextSize("It will overwrite the previous one.");
+    ImGui::SetNextWindowSize(ImVec2(textSize.x + 25, 112));
     ImGui::SetNextWindowPos(ImVec2((ImGui::GetIO().DisplaySize.x / 2) - 195, (ImGui::GetIO().DisplaySize.y / 2) - 56));
     if (ImGui::BeginPopupModal("savedialog", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove))
     {
         ImGui::Text("Are you sure you want to save your config?");
-        ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 40);
+        ImGui::SetCursorPosX((ImGui::GetWindowWidth() - textSize2.x)/2);
         ImGui::Text("It will overwrite the previous one.");
         ImGui::Separator();
-        ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 55);
-        if (ImGui::Button("Save " ICON_FA_FILE_EXPORT, ImVec2(120, 0))) {
+        ImGui::SetCursorPosX((ImGui::GetWindowWidth() - 200)/2);
+        if (ImGui::Button("Save " ICON_FA_FILE_EXPORT, ImVec2(100, 0))) {
             config::saveConfig();
             ImGui::CloseCurrentPopup();
         }
         ImGui::SetItemDefaultFocus();
         ImGui::SameLine();
-        if (ImGui::Button("Cancel" ICON_FA_XMARK, ImVec2(120, 0))) { ImGui::CloseCurrentPopup(); }
+        if (ImGui::Button("Cancel" ICON_FA_XMARK, ImVec2(100, 0))) { ImGui::CloseCurrentPopup(); }
         ImGui::EndPopup();
     }
     static char cfg[128] = "";
@@ -223,12 +224,33 @@ void menu::drawAim() {
     {
         ImGui::SeparatorText("Triggerbot Options");
         ImGui::Checkbox("Target Team", &config::cfg.aimbot.triggerBotTargetsTeam);
+        ImGui::Checkbox("Magnetic", &config::cfg.aimbot.triggerMagnet);
+        ImGui::SliderInt("Delay", &config::cfg.aimbot.triggerBotDelay, 1, 200);
         ImGui::EndPopup();
     }
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
     ImGui::Text("Triggerbot Key");
 	ImGui::SameLine(); ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 5); ImGui::SetCursorPosX(ImGui::GetWindowWidth() - ImGui::CalcTextSize(ImGui::GetKeyNameExtended(ImGuiKey(config::cfg.aimbot.triggerBotKey))).x - 20);
     ImGui::Hotkey(&config::cfg.aimbot.triggerBotKey);
+    ImGui::Text("Hitbox Selector");
+    if (ImGui::BeginListBox("##hbSelector", ImVec2(-FLT_MIN, 5 * ImGui::GetTextLineHeightWithSpacing())))
+    {
+        int i = 0;
+        for (auto& bone : esp::boneMap2)
+        {
+            const bool is_selected = (config::cfg.aimbot.selectedMenu == i);
+            if (ImGui::Selectable(bone.first.c_str(), is_selected)) {
+                config::cfg.aimbot.selectedMenu = i;
+                config::cfg.aimbot.selectedHitbox = bone.second;
+            }
+
+            if (is_selected)
+                ImGui::SetItemDefaultFocus();
+
+            i++;
+        }
+        ImGui::EndListBox();
+    }
 }
 
 void menu::drawMisc() {
@@ -273,19 +295,19 @@ void menu::drawEspPreview() {
     }
 
     if (config::cfg.esp.name) {
-        ImVec2 textSize = ImGui::CalcTextSizeFont(14.f, "BOT GARY");
+        ImVec2 textSize = ImGui::CalcTextSizeFont(14.f, "Greymouth");
         ImVec2 textPos = ImVec2(characterPos.x + ((characterSize.x - textSize.x) / 2), characterPos.y - textSize.y - 2);
 
-        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 14.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), "BOT GARY");
+        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[2], 14.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), "Greymouth");
     }
 
     if (config::cfg.esp.health) {
         ImVec2 barPos = characterPos + ImVec2(-6, -1);
-        ImVec2 textSize = ImGui::CalcTextSizeFont(12.f, "100");
-        ImVec2 textPos = ImVec2(barPos.x - textSize.x, barPos.y + characterSize.y - (characterSize.y * 1) - 1);
+        ImVec2 textSize = ImGui::CalcTextSizeFont(12.f, "83");
+        ImVec2 textPos = ImVec2(barPos.x - textSize.x, barPos.y + characterSize.y - (characterSize.y * 0.83) - 1);
         ImGui::GetWindowDrawList()->AddRectFilled(barPos, barPos + ImVec2(4, characterSize.y + 2), IM_COL32_BLACK);
-        ImGui::GetWindowDrawList()->AddRectFilled(barPos + ImVec2(1, characterSize.y - (characterSize.y * 1) + 1), barPos + ImVec2(3, characterSize.y + 1), ImColor(0, 255, 0, 255));
-        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 12.f, textPos, IM_COL32_WHITE, IM_COL32_BLACK, "100");
+        ImGui::GetWindowDrawList()->AddRectFilled(barPos + ImVec2(1, characterSize.y - (characterSize.y * 0.83) + 1), barPos + ImVec2(3, characterSize.y + 1), ImColor(0, 255, 0, 255));
+        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 12.f, textPos, IM_COL32_WHITE, IM_COL32_BLACK, "83");
         if (config::cfg.esp.healthGlow)
             ImGui::GetWindowDrawList()->AddShadowRect(barPos + ImVec2(1,1), barPos + ImVec2(3, characterSize.y + 1), ImColor(0.f, 1.f, 0.f, 1.f), 50.f, ImVec2(0, 0), ImDrawFlags_ShadowCutOutShapeBackground);
     }
