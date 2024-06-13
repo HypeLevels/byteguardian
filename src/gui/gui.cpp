@@ -62,7 +62,7 @@ void gui::setupWindow(HINSTANCE instance) {
 }
 
 void gui::setupDX11(int nCmdShow) {
-	sd.BufferDesc.RefreshRate.Numerator = 144;
+	sd.BufferDesc.RefreshRate.Numerator = 180;
 	sd.BufferDesc.RefreshRate.Denominator = 1;
 	sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	sd.SampleDesc.Count = 1;
@@ -105,6 +105,9 @@ void gui::setupDX11(int nCmdShow) {
 	SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
+	SetForegroundWindow(hwnd);
+	SetActiveWindow(hwnd);
+	SetFocus(hwnd);
 }
 
 void gui::setupImgui() {
@@ -207,7 +210,7 @@ void gui::setupImgui() {
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.IniFilename = nullptr;
-	io.Fonts->AddFontFromMemoryTTF(smallestPixel, sizeof(smallestPixel), 18.0f);
+	io.Fonts->AddFontFromMemoryTTF(nunito, sizeof(nunito), 18.0f);
 
 	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
 	ImFontConfig icons_config;
@@ -216,6 +219,7 @@ void gui::setupImgui() {
 	icons_config.GlyphMinAdvanceX = 18.f * 2.f / 2.5f;
 	io.Fonts->AddFontFromMemoryTTF(faSolid900, sizeof(faSolid900), 18.f * 2.f / 2.5f, &icons_config, icons_ranges);
 	io.Fonts->AddFontFromMemoryTTF(smallestPixel, sizeof(smallestPixel), 45.0f);
+	io.Fonts->AddFontFromMemoryTTF(nunito, sizeof(nunito), 45.0f);
 	io.Fonts->AddFontFromMemoryTTF(byteguardian, sizeof(byteguardian), 24.f);
 }
 
@@ -240,6 +244,10 @@ void gui::beginRender() {
 			SetWindowLongPtr(hwnd, GWL_EXSTYLE, windowStyle);
 		}
 		else {
+			HWND gamehwnd = FindWindowA(NULL, "Counter-Strike 2");
+			SetForegroundWindow(gamehwnd);
+			SetActiveWindow(gamehwnd);
+			SetFocus(gamehwnd);
 			LONG_PTR windowStyle = GetWindowLongPtr(hwnd, GWL_EXSTYLE);
 			SetWindowLongPtr(hwnd, GWL_EXSTYLE, windowStyle | WS_EX_TRANSPARENT);
 		}

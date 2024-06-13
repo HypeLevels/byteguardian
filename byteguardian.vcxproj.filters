@@ -1001,6 +1001,9 @@
     <ClInclude Include="src\cheat\aim.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="includes\imgui\misc\fonts\nunito.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\freetype.lib" />

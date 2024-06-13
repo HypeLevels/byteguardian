@@ -12,6 +12,9 @@ namespace config {
 		int triggerBotKey;
 		bool triggerBotTargetsTeam;
 		int triggerBotDelay;
+		int selectedMenu;
+		int selectedHitbox;
+		bool triggerMagnet;
 	};
 	struct ESP {
 		bool enableEsp;
@@ -47,7 +50,7 @@ namespace config {
 
 		template<typename Ar>
 		void serialize(Ar& ar) {
-			ar& YAS_OBJECT(nullptr, misc.bhop, misc.crosshair, misc.crosshairColor, aimbot.triggerBot, aimbot.triggerBotKey, aimbot.triggerBotDelay, aimbot.triggerBotTargetsTeam,
+			ar& YAS_OBJECT(nullptr, misc.bhop, misc.crosshair, misc.crosshairColor, aimbot.triggerBot, aimbot.triggerBotKey, aimbot.selectedHitbox, aimbot.selectedMenu, aimbot.triggerMagnet, aimbot.triggerBotDelay, aimbot.triggerBotTargetsTeam,
 				esp.enableEsp, esp.displayTeam, esp.boundingBox, esp.boundingBoxGlow, esp.health, esp.gun, esp.name, esp.skeleton,
 				esp.bboxColor, esp.bboxOutline, esp.bboxGlow, esp.healthGlow, esp.gunColor, esp.gunOutline, esp.nameColor, esp.nameOutline, esp.skeletonColor);
 		}

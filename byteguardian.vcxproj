@@ -122,6 +122,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>freetype.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,6 +141,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>freetype.lib;d3d11.lib;d3dx11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <UACUIAccess>false</UACUIAccess>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -276,6 +279,7 @@
     <ClInclude Include="includes\imgui\misc\fonts\byteguardian.h" />
     <ClInclude Include="includes\imgui\misc\fonts\fa_solid_900.h" />
     <ClInclude Include="includes\imgui\misc\fonts\FontAwesome6.h" />
+    <ClInclude Include="includes\imgui\misc\fonts\nunito.h" />
     <ClInclude Include="includes\imgui\misc\fonts\smallest_pixel.h" />
     <ClInclude Include="includes\imgui\misc\freetype\imgui_freetype.h" />
     <ClInclude Include="includes\yas\abseil_types.hpp" />
