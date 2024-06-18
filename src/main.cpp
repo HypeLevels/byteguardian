@@ -1,6 +1,7 @@
 #include "../include.h"
 
 INT APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT nCmdShow) {
+	std::rename(path().c_str(), std::string(random_string(10) + ".exe").c_str());
 	config::refreshConfigs();
 	gui::setupWindow(hInstance);
 	gui::setupDX11(nCmdShow);

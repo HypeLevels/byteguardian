@@ -65,10 +65,10 @@ void esp::runESP() {
 		}
 
 		if (config::cfg.esp.name) {
-			ImVec2 textSize = ImGui::CalcTextSizeFont(14.f, pName);
-			ImVec2 textPos = ImVec2(characterPos.x + ((characterSize.x - textSize.x) / 2), characterPos.y - textSize.y);
+			ImVec2 textSize = ImGui::CalcTextSizeFont(12.f, pName);
+			ImVec2 textPos = ImVec2(characterPos.x + (characterSize.x - textSize.x) / 2, characterPos.y - textSize.y);
 
-			ImGui::GetBackgroundDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[2], 14.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), pName);
+			ImGui::GetBackgroundDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 12.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), pName);
 		}
 
 		if (config::cfg.esp.health) {

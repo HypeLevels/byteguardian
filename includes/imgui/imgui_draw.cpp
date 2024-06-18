@@ -1685,6 +1685,10 @@ void ImDrawList::AddOutlinedText(const ImFont* font, float font_size, const ImVe
     AddText(font, font_size, pos + ImVec2(-1, 1), outcol, text_begin, text_end);
     AddText(font, font_size, pos + ImVec2(-1, -1), outcol, text_begin, text_end);
     AddText(font, font_size, pos + ImVec2(1, -1), outcol, text_begin, text_end);
+    AddText(font, font_size, pos + ImVec2(1, 0), outcol, text_begin, text_end);
+    AddText(font, font_size, pos + ImVec2(-1, 0), outcol, text_begin, text_end);
+    AddText(font, font_size, pos + ImVec2(0, 1), outcol, text_begin, text_end);
+    AddText(font, font_size, pos + ImVec2(0, -1), outcol, text_begin, text_end);
 
     AddText(font, font_size, pos, col, text_begin, text_end);
 }

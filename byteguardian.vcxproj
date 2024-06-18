@@ -476,6 +476,7 @@
     <ClInclude Include="src\memify\memify.h" />
     <ClInclude Include="src\menu\menu.h" />
     <ClInclude Include="utils\logger.h" />
+    <ClInclude Include="utils\rand.h" />
     <ClInclude Include="utils\w2s.h" />
   </ItemGroup>
   <ItemGroup>

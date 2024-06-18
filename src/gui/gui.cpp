@@ -17,18 +17,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 }
 
 void gui::setupWindow(HINSTANCE instance) {
+	std::string wName = random_string(15);
 	wc.cbSize = sizeof(WNDCLASSEX);
 	wc.style = CS_HREDRAW | CS_VREDRAW;
 	wc.lpfnWndProc = WndProc;
 	wc.hInstance = instance;
-	wc.lpszClassName = "byteguardian";
+	wc.lpszClassName = wName.c_str();
 
 	RegisterClassEx(&wc);
 
 	hwnd = CreateWindowEx(
 		WS_EX_TOPMOST | WS_EX_LAYERED,
 		wc.lpszClassName,
-		"byteguardian",
+		wName.c_str(),
 		WS_POPUP,
 		0,
 		0,
@@ -62,7 +63,7 @@ void gui::setupWindow(HINSTANCE instance) {
 }
 
 void gui::setupDX11(int nCmdShow) {
-	sd.BufferDesc.RefreshRate.Numerator = 180;
+	sd.BufferDesc.RefreshRate.Numerator = 144;
 	sd.BufferDesc.RefreshRate.Denominator = 1;
 	sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	sd.SampleDesc.Count = 1;
@@ -210,17 +211,21 @@ void gui::setupImgui() {
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.IniFilename = nullptr;
-	io.Fonts->AddFontFromMemoryTTF(nunito, sizeof(nunito), 18.0f);
+	ImFontConfig bitmap;
+	bitmap.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags::ImGuiFreeTypeBuilderFlags_Monochrome | ImGuiFreeTypeBuilderFlags::ImGuiFreeTypeBuilderFlags_MonoHinting;
+	ImFontConfig normalfont;
+	normalfont.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags::ImGuiFreeTypeBuilderFlags_ForceAutoHint;
+	io.Fonts->AddFontFromMemoryTTF(nunito, sizeof(nunito), 18.0, &normalfont);
 
 	static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
 	ImFontConfig icons_config;
+	icons_config.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags::ImGuiFreeTypeBuilderFlags_ForceAutoHint;
 	icons_config.MergeMode = true;
 	icons_config.PixelSnapH = true;
 	icons_config.GlyphMinAdvanceX = 18.f * 2.f / 2.5f;
 	io.Fonts->AddFontFromMemoryTTF(faSolid900, sizeof(faSolid900), 18.f * 2.f / 2.5f, &icons_config, icons_ranges);
-	io.Fonts->AddFontFromMemoryTTF(smallestPixel, sizeof(smallestPixel), 45.0f);
-	io.Fonts->AddFontFromMemoryTTF(nunito, sizeof(nunito), 45.0f);
-	io.Fonts->AddFontFromMemoryTTF(byteguardian, sizeof(byteguardian), 24.f);
+	io.Fonts->AddFontFromMemoryTTF(smallestPixel, sizeof(smallestPixel), 45.0f, &bitmap);
+	io.Fonts->AddFontFromMemoryTTF(byteguardian, sizeof(byteguardian), 24.f, &bitmap);
 }
 
 void gui::beginRender() {
@@ -265,8 +270,11 @@ void gui::render() {
 	ImGui::RenderNotifications();
 	if (!process.InForeground())
 		return;
-	if (config::cfg.esp.enableEsp)
+	if (config::cfg.esp.enableEsp) {
+		ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
 		esp::runESP();
+		ImGui::PopFont();
+	}
 	if (config::cfg.misc.crosshair)
 		misc::crosshair();
 }

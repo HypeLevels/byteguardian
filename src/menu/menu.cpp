@@ -5,7 +5,7 @@ void menu::drawMenu() {
     ImGui::PushStyleColor(ImGuiCol_WindowShadow, ImVec4(0.4980392158031464f, 0.5137255191802979f, 1.0f, 1.f));
     ImGui::Begin("byteguardian", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
     ImGui::PopStyleColor();
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[3]);
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[2]);
     ImGui::Text("A");
     ImGui::PopFont();
     ImGui::SameLine();
@@ -281,6 +281,7 @@ void menu::drawEspPreview() {
     ImGui::SetCursorPosX((ImGui::GetWindowWidth() - ImGui::CalcTextSize("ESP PREVIEW").x) / 2);
     ImGui::Text("ESP PREVIEW");
     ImGui::Separator();
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
     ImVec2 characterPos = ImVec2(86, ImGui::GetCursorPosY() + 35);
     ImVec2 characterSize = ImVec2(112, 315);
     ImGui::SetCursorPos(characterPos);
@@ -295,10 +296,10 @@ void menu::drawEspPreview() {
     }
 
     if (config::cfg.esp.name) {
-        ImVec2 textSize = ImGui::CalcTextSizeFont(14.f, "Greymouth");
+        ImVec2 textSize = ImGui::CalcTextSizeFont(12.f, "Greymouth");
         ImVec2 textPos = ImVec2(characterPos.x + ((characterSize.x - textSize.x) / 2), characterPos.y - textSize.y - 2);
 
-        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[2], 14.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), "Greymouth");
+        ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 12.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.nameOutline), "Greymouth");
     }
 
     if (config::cfg.esp.health) {
@@ -317,6 +318,6 @@ void menu::drawEspPreview() {
         ImVec2 textPos = ImVec2(characterPos.x + (characterSize.x - textSize.x) / 2, characterPos.y + characterSize.y + 2);
         ImGui::GetWindowDrawList()->AddOutlinedText(ImGui::GetIO().Fonts->Fonts[1], 12.f, textPos, ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.gunColor), ImGui::ColorConvertFloat4ToU32((ImVec4&)config::cfg.esp.gunOutline), "Glock-18");
     }
-
+    ImGui::PopFont();
     ImGui::End();
 }

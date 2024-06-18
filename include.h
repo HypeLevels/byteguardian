@@ -1,6 +1,6 @@
 #pragma once
 #define IMGUI_DEFINE_MATH_OPERATORS
-#define dwGameEntitySystem 0x1AD38B8
+#define dwGameEntitySystem 0x1AD3888
 #define m_iszPlayerName 0x630
 #define m_iMaxHealth 0x320
 #define m_iHealth 0x324
@@ -9,9 +9,9 @@
 #define m_vecOrigin  0x88
 #define m_vecMins 0x40
 #define m_vecMaxs 0x4C
-#define dwViewMatrix 0x1A16A50
+#define dwViewMatrix 0x1A16A60
 #define m_iTeamNum 0x3C3
-#define dwLocalPlayerPawn 0x181A998
+#define dwLocalPlayerPawn 0x181A9C8
 #define m_pClippingWeapon 0x12F0
 #define m_AttributeManager 0x1090
 #define m_Item 0x50
@@ -19,11 +19,13 @@
 #define m_fFlags 0x3CC
 #define m_iIDEntIndex 0x13A8
 #define m_bIsScoped 0x2290
-#define dwEntityList 0x19B4998
+#define dwEntityList 0x19B49B8
 #include "../includes/imgui/imgui_internal.h"
 #include "../includes/imgui/imgui.h"
+#include "../includes/imgui/misc/freetype/imgui_freetype.h"
 #include "../includes/imgui/backends/imgui_impl_dx11.h"
 #include "../includes/imgui/backends/imgui_impl_win32.h"
+#include <random>
 #include <d3d11.h>
 #include <D3DX11tex.h>
 #include <tchar.h>
@@ -35,6 +37,7 @@
 #include <string>
 #include <Psapi.h>
 #include <cstdint>
+#include "../utils/rand.h"
 #include "../utils/logger.h"
 #include "../utils/w2s.h"
 #include "../assets/csCharacter.h"
