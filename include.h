@@ -11,7 +11,7 @@
 #define m_vecMaxs 0x4C
 #define dwViewMatrix 0x1A16A60
 #define m_iTeamNum 0x3C3
-#define dwLocalPlayerPawn 0x181A9C8
+#define dwLocalPlayerPawn 0x181A9B8
 #define m_pClippingWeapon 0x12F0
 #define m_AttributeManager 0x1090
 #define m_Item 0x50

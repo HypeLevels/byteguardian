@@ -3,7 +3,7 @@
 void esp::runESP() {
 	ViewMatrix vm = process.Read<ViewMatrix>(client + dwViewMatrix);
 	uintptr_t lPawn = process.Read<uintptr_t>(client + dwLocalPlayerPawn);
-	for (int32_t i = 1; i <= 512; i++) {
+	for (int32_t i = 1; i <= 1024; i++) {
 		std::map<std::string, ImVec2> boneScreenPos;
 		const auto pController = gameEntitySystem.entity_list.get_player_controller(i);
 		if (pController == 0)
