@@ -1,6 +1,6 @@
 #pragma once
 #define IMGUI_DEFINE_MATH_OPERATORS
-#define dwGameEntitySystem 0x1AD3888
+#define dwGameEntitySystem 0x1ADBBB8
 #define m_iszPlayerName 0x630
 #define m_iMaxHealth 0x320
 #define m_iHealth 0x324
@@ -9,17 +9,17 @@
 #define m_vecOrigin  0x88
 #define m_vecMins 0x40
 #define m_vecMaxs 0x4C
-#define dwViewMatrix 0x1A16A60
+#define dwViewMatrix 0x1A1ED00
 #define m_iTeamNum 0x3C3
-#define dwLocalPlayerPawn 0x181A9B8
+#define dwLocalPlayerPawn 0x18229F8
 #define m_pClippingWeapon 0x12F0
 #define m_AttributeManager 0x1090
 #define m_Item 0x50
 #define m_iItemDefinitionIndex 0x1BA
 #define m_fFlags 0x3CC
 #define m_iIDEntIndex 0x13A8
-#define m_bIsScoped 0x2290
-#define dwEntityList 0x19B49B8
+#define m_bIsScoped 0x22A0
+#define dwEntityList 0x19BCC38
 #include "../includes/imgui/imgui_internal.h"
 #include "../includes/imgui/imgui.h"
 #include "../includes/imgui/misc/freetype/imgui_freetype.h"
